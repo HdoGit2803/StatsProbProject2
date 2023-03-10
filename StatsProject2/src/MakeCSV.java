@@ -110,6 +110,14 @@ public class MakeCSV
 						smooth += y.get(copy);
 						count2++;
 					}
+					if(count1 == 0)
+					{
+						count1 = 1;
+					}
+					if(count2 == 0)
+					{
+						count2 = 1;
+					}
 					smooth = smooth/(count1+count2);
 					newFile += hold[0] + "," + String.valueOf(smooth) + "\n";
 					idex++;

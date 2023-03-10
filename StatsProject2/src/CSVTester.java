@@ -14,7 +14,7 @@ public class CSVTester
 		int windowValue;
 		System.out.println("Enter the starting range from -100 to 100");
 		range = sc.nextInt();
-		System.out.println("Enter the amount the salter will minus or add by");
+		System.out.println("Enter the range the salter will minus or add by");
 		bump = sc.nextInt();
 		System.out.println("Enter the window value");
 		windowValue = sc.nextInt();
