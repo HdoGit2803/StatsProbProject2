@@ -12,14 +12,13 @@ public class MakeCSV
 	
 	static void output(int range)
 	{
-		
 		try
 		{
 			PrintWriter write = new PrintWriter("stat.CSV");
 					for(int i = range;i<=100;i++)
 					{
-						double y = 1;
-						y = Math.pow(i, 2)+2*i+1;
+						double y;
+						y = 2*i + 1;
 						write.print(i + "," + y);
 						write.println();
 						
@@ -39,7 +38,7 @@ public class MakeCSV
 		
 	}
 	
-	static void salter(File name,int bump,int range)
+	static void salter(File name,int bump)
 	{
 		Random rand = new Random();
 		String buff;
@@ -48,14 +47,14 @@ public class MakeCSV
 		double newY;
 		try
 		{
-			BufferedReader in = new BufferedReader(new FileReader(name));
-			while((buff = in.readLine()) != null)
+			BufferedReader read = new BufferedReader(new FileReader(name));
+			while((buff = read.readLine()) != null)
 			{
 				hold = buff.split(",");
-				newY = Double.parseDouble(hold[1]) + rand.nextInt(bump)-bump;
+				newY = Double.parseDouble(hold[1]) + rand.nextInt(bump*2)-bump;
 				newFile += hold[0] + "," + String.valueOf(newY) + "\n";
 			}
-			in.close();
+			read.close();
 			PrintWriter write = new PrintWriter(name);
 			write.print(newFile);
 			write.close();
@@ -71,7 +70,68 @@ public class MakeCSV
 
 	}
 	
-	
+	static void smoother(File name,int walue)
+	{
+		String[] hold;
+		String buff;
+		double smooth = 0;
+		String newFile = "";
+		ArrayList<Double> y = new ArrayList<Double>();
+		int idex = 0;
+		try
+		{
+				BufferedReader go = new BufferedReader(new FileReader(name));
+				while((buff = go.readLine()) != null)
+				{
+					hold = buff.split(",");
+					y.add(Double.parseDouble(hold[1]));
+				}
+				go.close();
+				
+				BufferedReader read = new BufferedReader(new FileReader(name));
+				while((buff = read.readLine()) != null)
+				{
+					smooth = 0;
+					hold = buff.split(",");
+					int count1 = 0;
+					int count2 = 0;
+					int copy = idex;
+					
+					while((copy>0)&(count1<=walue))
+					{
+						copy--;
+						smooth += y.get(copy);
+						count1++;
+					}	
+					copy = idex;
+					while((copy<y.size()-1)&(count2<=walue))
+					{
+						copy++;
+						smooth += y.get(copy);
+						count2++;
+					}
+					smooth = smooth/(count1+count2);
+					newFile += hold[0] + "," + String.valueOf(smooth) + "\n";
+					idex++;
+					
+				}
+				read.close();
+				PrintWriter write = new PrintWriter(name);
+				write.print(newFile);
+				write.close();
+			
+			
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.print("File Not Found");
+		}
+		catch(IOException e)
+		{
+			System.out.print("I0Exeption");
+		}
+
+	}
 	
 	
 	
