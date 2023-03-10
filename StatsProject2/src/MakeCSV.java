@@ -10,8 +10,9 @@ public class MakeCSV
 		
 	}
 	
-	static void output(int range)
+	static void output(int range,int inter)
 	{
+		int count = inter;
 		try
 		{
 			PrintWriter write = new PrintWriter("stat.CSV");
@@ -19,9 +20,13 @@ public class MakeCSV
 					{
 						double y;
 						y = 2*i + 1;
-						write.print(i + "," + y);
-						write.println();
-						
+						if(count == inter||i==100)
+						{
+							write.print(i + "," + y);
+							write.println();
+							count = 0;
+						}
+						count++;
 					}
 			write.close();
 			
@@ -97,28 +102,26 @@ public class MakeCSV
 					int count2 = 0;
 					int copy = idex;
 					
-					while((copy>0)&(count1<=walue))
+					while(((copy-count1)>0)&(count1<walue))
 					{
-						copy--;
-						smooth += y.get(copy);
 						count1++;
+						smooth += y.get(copy-count1);
 					}	
 					copy = idex;
-					while((copy<y.size()-1)&(count2<=walue))
+					while(((copy+count2)<y.size()-1)&(count2<walue))
 					{
-						copy++;
-						smooth += y.get(copy);
 						count2++;
+						smooth += y.get(copy+count2);
 					}
-					if(count1 == 0)
+					
+					//if by some chance both count1 and 2 equals 0 then count1 = 1 so that there wont be a divide by zero situation
+					if(count1 == 0 & count2 ==0)
 					{
 						count1 = 1;
 					}
-					if(count2 == 0)
-					{
-						count2 = 1;
-					}
+					
 					smooth = smooth/(count1+count2);
+					y.set(idex, smooth);
 					newFile += hold[0] + "," + String.valueOf(smooth) + "\n";
 					idex++;
 					
