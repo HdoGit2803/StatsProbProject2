@@ -20,7 +20,7 @@ public class CSVTester
 		System.out.println("Enter the window value 1 or greater");
 		windowValue = sc.nextInt();
 		System.out.println("Enter the interval of the plotted points 1 or greater");
-		interval = 1;
+		interval = sc.nextInt();
 		
 		def.output(range,interval);
 		norm.ReadFile(stat);
