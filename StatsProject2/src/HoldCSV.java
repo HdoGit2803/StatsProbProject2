@@ -19,7 +19,6 @@ public class HoldCSV
 		try
 		{
 			BufferedReader in = new BufferedReader(new FileReader(name));
-			{
 				while((buff = in.readLine()) != null)
 				{
 					hold = buff.split(",");
@@ -27,7 +26,6 @@ public class HoldCSV
 					y.add(Double.parseDouble(hold[1]));
 				}
 				in.close();
-			}
 			
 		}
 		catch(FileNotFoundException e)
