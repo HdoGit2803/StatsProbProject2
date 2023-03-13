@@ -92,7 +92,6 @@ public class MakeCSV
 					y.add(Double.parseDouble(hold[1]));
 				}
 				go.close();
-				
 				BufferedReader read = new BufferedReader(new FileReader(name));
 				while((buff = read.readLine()) != null)
 				{
@@ -107,6 +106,7 @@ public class MakeCSV
 						count1++;
 						smooth += y.get(copy-count1);
 					}	
+					
 					copy = idex;
 					while(((copy+count2)<y.size()-1)&(count2<walue))
 					{
