@@ -27,6 +27,7 @@ public class StatlLibraryTester
 		System.out.println("Combination: "+def.combination(10, 9));
 		System.out.println("Geometric: "+def.geometric(.3, 9));
 		System.out.println("HpyerGeometric: "+ def.hyperGeo(8, 3, 5, 2));
+		System.out.println("Poisson: "+ def.poisson(4, 2));
 		
 	}
 }

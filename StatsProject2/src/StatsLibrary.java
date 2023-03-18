@@ -390,6 +390,23 @@ public class StatsLibrary
 		return hyper;
 	}
 	
+	public BigDecimal poisson(int y,int lam)
+	{
+		double epow = Math.exp(-lam);
+		double lampow = Math.pow(lam, y);
+		BigDecimal facty = new BigDecimal("1");
+		for (int i = 2; i <= y; i++)
+		{
+			facty = facty.multiply(BigDecimal.valueOf(i));
+		}
+		BigDecimal poisson = new BigDecimal(epow);
+		poisson = poisson.multiply(BigDecimal.valueOf(lampow));
+		poisson = poisson.divide(facty,8,RoundingMode.HALF_UP);
+		
+		return poisson;
+		
+		
+	}
 
 	
 }
