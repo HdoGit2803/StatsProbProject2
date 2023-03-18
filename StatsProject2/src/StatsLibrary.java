@@ -375,6 +375,21 @@ public class StatsLibrary
 		return Geo.setScale(8,RoundingMode.CEILING);
 		
 	}
+	
+	public BigDecimal hyperGeo(int N, int n, int r,int y)
+	{
+		int capN = N;
+		int smolN = n;
+		int smolr = r;
+		int smoly = y;
+		BigDecimal comp1 = new BigDecimal(combination(r,y));
+		BigDecimal comp2 = new BigDecimal(combination((N-r),(n-y)));
+		BigDecimal comp3 = new BigDecimal(combination(N,n));
+		BigDecimal hyper = comp1.multiply(comp2);
+		hyper = hyper.divide(comp3,8,RoundingMode.HALF_UP);
+		return hyper;
+	}
+	
 
 	
 }
