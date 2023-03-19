@@ -13,7 +13,7 @@ public class CSVTester
 		int bump;
 		int windowValue;
 		int interval;
-		System.out.println("Enter the starting range from -100 to 100");
+		System.out.println("Enter the starting index from -100 to 100");
 		range = sc.nextInt();
 		System.out.println("Enter the range the salter will minus or add by 0 or greater");
 		bump = sc.nextInt();
@@ -25,6 +25,8 @@ public class CSVTester
 		def.output(range,interval);
 		norm.ReadFile(stat);
 		def.salter(stat, bump);
+		def.smoother(stat, windowValue);
+		def.smoother(stat, windowValue);
 		def.smoother(stat, windowValue);
 		System.out.println();
 

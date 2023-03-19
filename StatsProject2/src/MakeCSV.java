@@ -61,8 +61,11 @@ public class MakeCSV
 			}
 			read.close();
 			PrintWriter write = new PrintWriter(name);
+			PrintWriter writeSalt = new PrintWriter("salt.CSV");
+			writeSalt.print(newFile);
 			write.print(newFile);
 			write.close();
+			writeSalt.close();
 		}
 		catch(FileNotFoundException e)
 		{
@@ -92,6 +95,7 @@ public class MakeCSV
 					y.add(Double.parseDouble(hold[1]));
 				}
 				go.close();
+				
 				BufferedReader read = new BufferedReader(new FileReader(name));
 				while((buff = read.readLine()) != null)
 				{
