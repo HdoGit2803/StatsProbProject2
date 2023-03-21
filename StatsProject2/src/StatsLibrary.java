@@ -376,12 +376,15 @@ public class StatsLibrary
 		
 	}
 	
+	/*
+	 * method to do hypergeometric distribution
+	 * @param N = total number of items
+	 * @param r = type 1 items
+	 * @param y = number we want
+	 * @param n = number selected
+	 */
 	public BigDecimal hyperGeo(int N, int n, int r,int y)
 	{
-		int capN = N;
-		int smolN = n;
-		int smolr = r;
-		int smoly = y;
 		BigDecimal comp1 = new BigDecimal(combination(r,y));
 		BigDecimal comp2 = new BigDecimal(combination((N-r),(n-y)));
 		BigDecimal comp3 = new BigDecimal(combination(N,n));
@@ -390,6 +393,11 @@ public class StatsLibrary
 		return hyper;
 	}
 	
+	/*
+	 * method to do poisson distribution
+	 * @param lam = the lamda
+	 * @param y = number of times occurs
+	 */
 	public BigDecimal poisson(int y,int lam)
 	{
 		double epow = Math.exp(-lam);
