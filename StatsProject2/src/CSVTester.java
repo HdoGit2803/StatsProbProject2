@@ -25,9 +25,9 @@ public class CSVTester
 		def.output(range,interval);
 		norm.ReadFile(stat);
 		def.salter(stat, bump);
-		def.smoother(stat, windowValue);
-		def.smoother(stat, windowValue);
-		def.smoother(stat, windowValue);
+		def.smoother(stat, windowValue,range);
+		//def.smoother(stat, windowValue,range);
+		//def.smoother(stat, windowValue,range);
 		System.out.println();
 
 	}

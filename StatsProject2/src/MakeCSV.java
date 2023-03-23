@@ -78,13 +78,14 @@ public class MakeCSV
 
 	}
 	
-	static void smoother(File name,int walue)
+	static void smoother(File name,int walue,int range)
 	{
 		String[] hold;
 		String buff;
 		double smooth = 0;
 		String newFile = "";
 		ArrayList<Double> y = new ArrayList<Double>();
+		int x = range;
 		int idex = 0;
 		try
 		{
@@ -96,22 +97,19 @@ public class MakeCSV
 				}
 				go.close();
 				
-				BufferedReader read = new BufferedReader(new FileReader(name));
-				while((buff = read.readLine()) != null)
+				while(idex<y.size())
 				{
 					smooth = 0;
-					hold = buff.split(",");
 					int count1 = 0;
 					int count2 = 0;
 					int copy = idex;
 					
-					while(((copy-count1)>0)&(count1<walue))
+					while(((copy-count1)>=0)&(count1<=walue))
 					{
-						count1++;
 						smooth += y.get(copy-count1);
+						count1++;
 					}	
 					
-					copy = idex;
 					while(((copy+count2)<y.size()-1)&(count2<walue))
 					{
 						count2++;
@@ -125,12 +123,13 @@ public class MakeCSV
 					}
 					
 					smooth = smooth/(count1+count2);
+					
 					y.set(idex, smooth);
-					newFile += hold[0] + "," + String.valueOf(smooth) + "\n";
+					newFile += x + "," + String.valueOf(smooth) + "\n";
+					x++;
 					idex++;
 					
 				}
-				read.close();
 				PrintWriter write = new PrintWriter(name);
 				write.print(newFile);
 				write.close();
