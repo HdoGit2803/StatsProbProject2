@@ -10,6 +10,11 @@ public class MakeCSV
 		
 	}
 	
+	/*
+	 * program the prints the x and y of y = 2x+1 into a csv
+	 * @param range = the range from x to 100 where the function y = 2x+1 would start and end where x is @range
+	 * @param inter = the interim in which the function y = 2x+1 would be plotted/written into the csv
+	 */
 	static void output(int range,int inter)
 	{
 		int count = inter;
@@ -43,6 +48,11 @@ public class MakeCSV
 		
 	}
 	
+	/*
+	 * program that would take in a csv and salt the data then write that back into the same csv
+	 * @param name = the name of the csv taken in a being overwritten
+	 * @param bump = the range that a randomly generated number would add or subtract from the data y
+	 */
 	static void salter(File name,int bump)
 	{
 		Random rand = new Random();
@@ -52,6 +62,11 @@ public class MakeCSV
 		double newY;
 		try
 		{
+			/*
+			 * this uses a buffer reader to read each line of the csv and then
+			 * seperate the current x and the current y into the array @hold that temp stores them
+			 * then the salted Y @newY is then calculated then both the current x and newY is added into a string @newFile
+			 */
 			BufferedReader read = new BufferedReader(new FileReader(name));
 			while((buff = read.readLine()) != null)
 			{
@@ -60,6 +75,11 @@ public class MakeCSV
 				newFile += hold[0] + "," + String.valueOf(newY) + "\n";
 			}
 			read.close();
+			/*
+			 * write the content of @newFile into the csv that taken in
+			 * the PrinteWriter @writeSalt also does the same into a new csv call salt
+			 * this is to make it easier for me to check on the salted data before it been smoothed
+			 */
 			PrintWriter write = new PrintWriter(name);
 			PrintWriter writeSalt = new PrintWriter("salt.CSV");
 			writeSalt.print(newFile);
@@ -78,6 +98,12 @@ public class MakeCSV
 
 	}
 	
+	/*
+	 * program that takes in a csv preferably one that been salted and then smooth the data
+	 * @param name = name of the csv taken in
+	 * @param walue = the window value of the smoother
+	 * @param range = the range that the csv from x to 100 started at where range is x
+	 */
 	static void smoother(File name,int walue,int range)
 	{
 		String[] hold;
@@ -89,6 +115,9 @@ public class MakeCSV
 		int idex = 0;
 		try
 		{
+			/*
+			 * read each line of the csv and add the y data into an arraylist @y
+			 */
 				BufferedReader go = new BufferedReader(new FileReader(name));
 				while((buff = go.readLine()) != null)
 				{
@@ -104,6 +133,9 @@ public class MakeCSV
 					int count2 = 0;
 					int copy = idex;
 					
+					/*
+					 * 
+					 */
 					while(((copy-count1)>=0)&(count1<=walue))
 					{
 						smooth += y.get(copy-count1);
