@@ -45,7 +45,7 @@ public class ApacheJfree extends ApplicationFrame
 	
 	private XYDataset createDataset()
 	{
-	      final XYSeries smooth = new XYSeries( "Smooth" );
+	      final XYSeries smooth = new XYSeries( "Original" );
 	      final XYSeries salt = new XYSeries( "Salt" );
 	      Random rand = new Random();
 	      for(int i = 0; i<100;i++)
