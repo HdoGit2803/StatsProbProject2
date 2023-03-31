@@ -28,7 +28,7 @@ public class ApacheJfree extends ApplicationFrame
 	    	         true , true , false);
 	    	         
 	    	      ChartPanel chartPanel = new ChartPanel( xylineChart );
-	    	      chartPanel.setPreferredSize( new java.awt.Dimension( 560 , 367 ) );
+	    	      chartPanel.setPreferredSize( new java.awt.Dimension( 1200 , 800 ) );
 	    	      final XYPlot plot = xylineChart.getXYPlot( );
 	    	      
 	    	      XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer( );
