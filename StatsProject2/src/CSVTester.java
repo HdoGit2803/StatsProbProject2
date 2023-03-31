@@ -1,4 +1,5 @@
 import java.io.*;
+
 public class CSVTester
 {
 
@@ -7,6 +8,7 @@ public class CSVTester
 		MakeCSV def = new MakeCSV();
 		HoldCSV norm = new HoldCSV();
 		File stat = new File("stat.CSV");
+;
 		
 		//range of csv from x to 100 where x is between -100 to 100
 		int range = 0;
@@ -25,6 +27,7 @@ public class CSVTester
 		def.smoother(stat, windowValue,range);
 		def.smoother(stat, windowValue,range);
 		System.out.println();
+		
 
 	}
 
