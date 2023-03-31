@@ -1,4 +1,5 @@
-import java.awt.Color; 
+import java.awt.Color;
+import java.util.Random;
 import java.awt.BasicStroke; 
 
 import org.jfree.chart.ChartPanel; 
@@ -44,12 +45,16 @@ public class ApacheJfreeTester extends ApplicationFrame
 	private XYDataset createDataset()
 	{
 	      final XYSeries smooth = new XYSeries( "Smooth" );
+	      final XYSeries salt = new XYSeries( "Salt" );
+	      Random rand = new Random();
 	      for(int i = 0; i<100;i++)
 	      {
 	    	  smooth.add(i,2*i+1);
+	    	  salt.add(i,2*i+1+rand.nextInt(10*2)-10);
 	      }
 	      final XYSeriesCollection dataset = new XYSeriesCollection( );
 	      dataset.addSeries(smooth);
+	      dataset.addSeries(salt);
 	      return dataset;
 	}
 
