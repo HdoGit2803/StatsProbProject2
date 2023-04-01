@@ -22,7 +22,7 @@ public class ApacheJfreeTester
 		String title = "Original, Salter, Smoother";
 
 		ApacheJfree chart = new ApacheJfree(title,
-	    	         "Which Browser are you using?");
+	    	         title);
 	    	      chart.pack( );          
 	    	      RefineryUtilities.centerFrameOnScreen( chart );          
 	    	      chart.setVisible( true );
