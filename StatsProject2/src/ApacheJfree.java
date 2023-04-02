@@ -24,6 +24,10 @@ import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 public class ApacheJfree extends ApplicationFrame
 {
+	/*
+	 * contructor that also set the setting
+	 * to display the graph in awt form
+	 */
 	public ApacheJfree(String applicationTitle, String chartTitle)
 	{
 		
