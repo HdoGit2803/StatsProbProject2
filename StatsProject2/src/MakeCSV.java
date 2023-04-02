@@ -1,3 +1,8 @@
+/*
+ * program that plot a function in this case y = 2x + 1
+ * into a csv then another method salt the y data in that same csv
+ * then a 3rd method to smooth the csv
+ */
 import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -134,7 +139,10 @@ public class MakeCSV
 					int copy = idex;
 					
 					/*
-					 * 
+					 * add the current index to @smooth 
+					 * then also add the previous x index
+					 * where x is the window value
+					 * stops if it hits the first index since there nothing before that one
 					 */
 					while(((copy-count1)>=0)&(count1<=walue))
 					{
@@ -142,6 +150,11 @@ public class MakeCSV
 						count1++;
 					}	
 					
+					/*
+					 * same as above exept it does not add the current index
+					 * and it add the following x values
+					 * stops if it hits the last index since there nothing beyond that
+					 */
 					while(((copy+count2)<y.size()-1)&(count2<walue))
 					{
 						count2++;
@@ -154,8 +167,13 @@ public class MakeCSV
 						count1 = 1;
 					}
 					
+					//calculate the mean
 					smooth = smooth/(count1+count2);
 					
+					/*
+					 * change the current index of y to the current mean
+					 * then add the current position of x and the current mean to the string @newFile
+					 */
 					y.set(idex, smooth);
 					newFile += x + "," + String.valueOf(smooth) + "\n";
 					x++;
