@@ -25,13 +25,14 @@ import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 public class ApacheJfree extends ApplicationFrame
 {
 	/*
-	 * contructor that also set the setting
+	 * constructor that also set the setting
 	 * to display the graph in awt form
 	 */
 	public ApacheJfree(String applicationTitle, String chartTitle)
 	{
 		
 		super(applicationTitle);
+		//constructor from jfreechart that will construct our chart for us
 	      JFreeChart xylineChart = ChartFactory.createXYLineChart(
 	    		    getTitle() ,
 	    	         "X" ,
