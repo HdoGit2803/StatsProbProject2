@@ -28,6 +28,7 @@ public class StatlLibraryTester
 		System.out.println("Geometric: "+def.geometric(.3, 9));
 		System.out.println("HpyerGeometric: "+ def.hyperGeo(8, 3, 5, 2));
 		System.out.println("Poisson: "+ def.poisson(4, 2));
+		System.out.println("Tchebysheff: "+ def.tcheby(28,14));
 		
 	}
 }

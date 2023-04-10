@@ -415,6 +415,17 @@ public class StatsLibrary
 		
 		
 	}
+	
+	/*
+	 * method for tchebysheff
+	 * @param standard = standard deviation
+	 * @param within = within number to solve for the variable k in tchebysheff
+	 */
+	public double tcheby(int standard,int within)
+	{
+		double k = standard/within;
+		return 1 - 1/(Math.pow(k, 2));
+	}
 
 	
 }
