@@ -24,6 +24,12 @@ import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 public class ApacheJfree extends ApplicationFrame
 {
+	//window size
+	private int window = 5;
+	//where x will start
+	private int start = 0;
+	//the number in which the salter will salt by
+	private int generate = 10;
 	/*
 	 * constructor that also set the setting
 	 * to display the graph in awt form
@@ -66,17 +72,17 @@ public class ApacheJfree extends ApplicationFrame
 	      Random rand = new Random();
 	      
 	      DescriptiveStatistics stats = new DescriptiveStatistics();
-	      stats.setWindowSize(9);
+	      stats.setWindowSize(window*2);
 	      
 	      int x = 0;
 	      int idex = 0;
 	      int count1 = 0;
 	      
 	      
-	      for(int i = 0; i<100;i++)
+	      for(int i = start; i<100;i++)
 	      {
 	    	  origin.add(i,2*i+1);
-	    	  int rando = 2*i+1+rand.nextInt(10*2)-10;
+	    	  int rando = 2*i+1+rand.nextInt(generate*2)-generate;
 	    	  salt.add(i,rando);
 	    	  saltArr.add(rando);
 	      }
