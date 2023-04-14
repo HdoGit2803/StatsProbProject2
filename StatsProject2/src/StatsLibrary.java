@@ -427,6 +427,20 @@ public class StatsLibrary
 		double k = standard/within;
 		return 1 - 1/(Math.pow(k, 2));
 	}
+	
+	/*
+	 * method to do uniform distribution
+	 * @param a = the a variable in uniform distribution formula
+	 * @param b = the b variable in uniform distribution formula
+	 * @param up = the upper interval
+	 * @param down = the interval at the bottom
+	 */
+	public double uniform(int a,int b,int up,int down)
+	{
+		int denom = b-a;
+		int numer = up - down;
+		return numer/denom;
+	}
 
 	
 }
