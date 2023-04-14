@@ -64,6 +64,9 @@ public class ApacheJfree extends ApplicationFrame
 		
 	}
 	
+	/*
+	 * method that set the parameters for the graph being created
+	 */
 	private XYDataset createDataset()
 	{
 	      final XYSeries origin = new XYSeries( "Original" );
@@ -79,7 +82,11 @@ public class ApacheJfree extends ApplicationFrame
 	      int idex = 0;
 	      int count1 = 0;
 	      
-	      
+	      /*
+	       * loop that adds the x,y points for both the
+	       * original plot and the salted plot
+	       *also adds the y values into arraylist @saltArr
+	       */
 	      for(int i = start; i<100;i++)
 	      {
 	    	  origin.add(i,2*i+1);
@@ -88,14 +95,26 @@ public class ApacheJfree extends ApplicationFrame
 	    	  saltArr.add(rando);
 	      }
 	      
+	      /*
+	       * the smoothing part of my program
+	       */
 	      while(idex<saltArr.size())
 	      {    	  
+	    	  //immediatly at the start add the first value of @saltArr into @stats
 	    	  int copy = idex;
-	    	  if(count1 == 0)
+	    	  if(count1 == start)
 	    	  {
 	    		  stats.addValue(saltArr.get(copy));
 	    	  }
 	    	  
+	    	  /*
+	    	   * initially in the very first loop add the values ahead of our current index x
+	    	   * to @stats
+	    	   * base on the window size
+	    	   * after that it only adds 1 value following the current index
+	    	   * so if your window size is 5 it first adds the 5 following values
+	    	   * then every loop after that it only add the 5 value ahead of where the index currently is
+	    	   */
 	    	  if(copy+count1<idex+(stats.getWindowSize()/2))
 	    	  {
 		    	  while(((copy+count1)<saltArr.size()-1)&(copy+count1<idex+(stats.getWindowSize()/2)))
@@ -106,13 +125,17 @@ public class ApacheJfree extends ApplicationFrame
 		    	  count1 --;
 	    	  }
 	    	  
+	    	  //add the x,y point of the smooth data to @smooth
 	    	  smooth.add(x,stats.getMean());
 	    	  x++;
 	    	  idex++;
 	    	  
 	      }
 
-	      
+	      /*
+	       * adds all 3 XYSeries into one giant series
+	       * which will make up the actual graph
+	       */
 	      final XYSeriesCollection dataset = new XYSeriesCollection( );
 	      dataset.addSeries(origin);
 	      dataset.addSeries(salt);
