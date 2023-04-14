@@ -27,9 +27,10 @@ public class ApacheJfree extends ApplicationFrame
 	//window size
 	private int window = 5;
 	//where x will start
-	private int start = 0;
+	private int start = -5;
 	//the number in which the salter will salt by
 	private int generate = 10;
+	
 	/*
 	 * constructor that also set the setting
 	 * to display the graph in awt form
@@ -74,7 +75,7 @@ public class ApacheJfree extends ApplicationFrame
 	      DescriptiveStatistics stats = new DescriptiveStatistics();
 	      stats.setWindowSize(window*2);
 	      
-	      int x = 0;
+	      int x = start;
 	      int idex = 0;
 	      int count1 = 0;
 	      
