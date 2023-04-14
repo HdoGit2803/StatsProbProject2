@@ -27,7 +27,7 @@ public class ApacheJfree extends ApplicationFrame
 	//window size
 	private int window = 5;
 	//where x will start
-	private int start = -5;
+	private int start = 0;
 	//the number in which the salter will salt by
 	private int generate = 10;
 	
