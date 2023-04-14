@@ -6,6 +6,7 @@ import java.math.*;
 import java.util.ArrayList;
 public class StatsLibrary
 {
+	//all of my project 2 stuff is at the bottom
 	public StatsLibrary()
 	{
 		
