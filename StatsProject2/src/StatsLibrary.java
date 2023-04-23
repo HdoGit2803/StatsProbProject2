@@ -437,9 +437,10 @@ public class StatsLibrary
 	 */
 	public double uniform(int a,int b,int up,int down)
 	{
-		int denom = b-a;
-		int numer = up - down;
-		return numer/denom;
+		double denom = b-a;
+		double numer = up - down;
+		double exit = numer/denom;
+		return exit;
 	}
 
 	
